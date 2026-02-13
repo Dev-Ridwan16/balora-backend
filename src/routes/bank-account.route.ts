@@ -7,6 +7,6 @@ import {
 const router = express.Router();
 
 router.post("/link", linkBankAccount);
-router.post("/webhook/mono", verifyBankAccount);
+// router.post("/webhook/mono", verifyBankAccount);
 
 export default router;

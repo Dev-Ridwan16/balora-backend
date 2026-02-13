@@ -8,6 +8,7 @@ import { toNodeHandler } from "better-auth/node";
 import { auth } from "./utils/auth.js";
 import { requireAuth } from "./middleware/requireAuth.js";
 import bankAccountRoutes from "./routes/bank-account.route.js";
+import monoWebhookRoutes from "./routes/mono-webhook.route.js";
 
 dotenv.config();
 connectDB();
@@ -20,6 +21,7 @@ app.use(express.json());
 
 app.all("/api/v1/auth/*path", toNodeHandler(auth));
 app.use('/api/v1/bank-account', requireAuth, bankAccountRoutes)
+app.use('/api/v1', monoWebhookRoutes)
 
 
 app.listen(port, () => {
