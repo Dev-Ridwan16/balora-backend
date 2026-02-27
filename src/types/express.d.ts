@@ -1,4 +1,4 @@
-import type { auth } from "../utils/auth.ts";
+import type { auth } from "../shared/utils/auth.ts";
 
 type Session = typeof auth.$Infer.Session;
 
