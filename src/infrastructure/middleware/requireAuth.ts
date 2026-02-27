@@ -1,7 +1,7 @@
 import type { RequestHandler } from "express";
-import { auth } from "../utils/auth.js";
+import { auth } from "../../shared/utils/auth.js";
 import { fromNodeHeaders } from "better-auth/node";
-import { AppError } from "../utils/app.error.js";
+import { AppError } from "../../shared/utils/app.error.js";
 
 export const requireAuth: RequestHandler = async (req, res, next) => {
   try {

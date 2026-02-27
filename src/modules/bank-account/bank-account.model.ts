@@ -1,6 +1,12 @@
 // src/models/bank-account.model.ts
 import mongoose, { Schema, Document } from "mongoose";
 
+export enum BankAccountStatus {
+  PENDING = "pending",
+  LINKED = "linked",
+  UNLINKED = "unlinked",
+}
+
 export interface IBankAccount extends Document {
   userId: mongoose.Types.ObjectId;
   monoAccountId: string; // "6759f3a200000088aa632b9c" - Mono's account ID
@@ -17,7 +23,7 @@ export interface IBankAccount extends Document {
     bankCode: string; // "058"
     type: string; // "PERSONAL_BANKING"
   };
-  status: "pending" | "linked" | "unlinked";
+  status: BankAccountStatus;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -54,8 +60,8 @@ const BankAccountSchema = new Schema(
     },
     status: {
       type: String,
-      enum: ["pending", "linked", "unlinked"],
-      default: "pending",
+      enum: Object.values(BankAccountStatus),
+      default: BankAccountStatus.PENDING,
     },
   },
   { timestamps: true },
